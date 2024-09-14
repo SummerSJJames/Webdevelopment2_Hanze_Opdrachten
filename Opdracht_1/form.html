@@ -1,87 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Deel 1</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>Form</title>
 </head>
-<body>
-    <div class="container">
-        <form>
-            <legend class="font-weight-bold">Vul onderstaande gegevens in</legend>
-            <div class="form-group">
-                <label for="exampleInputEmail1">E-mailadres</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-mailadres">
-                <small id="emailHelp" class="form-text text-muted">Wij geven uw persoonlijke gegevens nooit door aan andere organisaties.</small>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput2">Wachtwoord</label>
-                <input type="password" class="form-control" id="exampleFormControlInput2" placeholder="Wachtwoord">
-              <label for="exampleFormControlSelect1">Betaalwijze</label>
-              <select class="form-control" id="exampleFormControlSelect1">
-                <option>iDeal</option>
-                <option>Paypal</option>
-                <option>Credit Card</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlSelect2">Welke instrumenten bespeelt u</label>
-              <select multiple class="form-control" id="exampleFormControlSelect2">
-                <option>Piano</option>
-                <option>Kerkorgel</option>
-                <option>Viool</option>
-                <option>Didgeridoo</option>
-                <option>Gitaar</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Eventuele op- of aanmerkingen:</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlFile1">Verplichte kattenfoto</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
-            </div>
-            <div id="radio-buttons">
-            <label class="col-form-label-lg font-weight-bold" for="radio-buttons">
-                Radio buttons
-                </label>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                <label class="form-check-label" for="exampleRadios1">
-                  Er is al een selectie gemaakt voor u-dat is een uitstekende keuze
-                </label>
-            </div>
-            <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-            <label class="form-check-label" for="exampleRadios2">
-                Ik ben nu wel helemaal zat van die teksten kopieeren de hele tijd
-            </label>
-            </div>
-            <div class="form-check disabled">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
-                <label class="form-check-label" for="exampleRadios3">
-                  Nee
-                </label>
-              </div>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck1">
-                <label class="form-check-label" for="gridCheck1">
-                  Ik heb geen zin om de algemene voorwaarden te schrijven
-                </label>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-10">
-                  <button type="submit" class="btn btn-primary">Verstuur (niet)</button>
-                </div>
-            </div>          
-          </form>
-    </div>
-    
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<body class="d-flex flex-column min-vh-100">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Inleiding Bootstrap</a>
+  </nav>
+  <div class="container flex-grow-1 mt-4">
+    <form>
+      <legend class="font-weight-bold">Vul onderstaande gegevens in</legend>
+      <div class="form-group">
+        <label for="exampleInputEmail1">E-mailadres</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          placeholder="E-mailadres">
+        <small id="emailHelp" class="form-text text-muted">Wij geven uw persoonlijke gegevens nooit door aan andere
+          organisaties.</small>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput2">Wachtwoord</label>
+        <input type="password" class="form-control" id="exampleFormControlInput2" placeholder="Wachtwoord">
+        <label for="exampleFormControlSelect1">Betaalwijze</label>
+        <select class="form-control" id="exampleFormControlSelect1">
+          <option>iDeal</option>
+          <option>Paypal</option>
+          <option>Credit Card</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect2">Welke instrumenten bespeelt u</label>
+        <select multiple class="form-control" id="exampleFormControlSelect2">
+          <option>Piano</option>
+          <option>Kerkorgel</option>
+          <option>Viool</option>
+          <option>Didgeridoo</option>
+          <option>Gitaar</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Eventuele op- of aanmerkingen:</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlFile1">Verplichte kattenfoto</label>
+        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+      </div>
+      <div id="radio-buttons">
+        <label class="col-form-label-lg font-weight-bold" for="radio-buttons">
+          Radio buttons
+        </label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+          <label class="form-check-label" for="exampleRadios1">
+            Er is al een selectie gemaakt voor u-dat is een uitstekende keuze
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+          <label class="form-check-label" for="exampleRadios2">
+            Ik ben nu wel helemaal zat van die teksten kopieeren de hele tijd
+          </label>
+        </div>
+        <div class="form-check disabled">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3"
+            disabled>
+          <label class="form-check-label" for="exampleRadios3">
+            Nee
+          </label>
+        </div>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck1">
+        <label class="form-check-label" for="gridCheck1">
+          Ik heb geen zin om de algemene voorwaarden te schrijven
+        </label>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-10">
+          <button type="submit" class="btn btn-primary">Verstuur (niet)</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <footer class="d-flex justify-content-between mt-auto p-3">
+    <span></span>
+    <a href="carousel.html" class="btn btn-primary">Volgende: Carousel</a>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>
