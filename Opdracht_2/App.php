@@ -25,8 +25,31 @@ function parseCsvFile(string $filePath): array
 
 function formatDate(string $date): string
 {
+    global $dutchMonths;
+
+    //Very hacky solution lmao
     $timestamp = str_replace("/", "-", $date);
-    return date('j F Y',  strtotime($timestamp));
+    $time = strtotime($timestamp);
+
+    if ($time === false) {
+        $date = DateTime::createFromFormat('m-d-Y', $timestamp) ?: DateTime::createFromFormat('m-d-Y', $timestamp);
+
+        if ($date) {
+            $day = $date->format('j');
+            $month = $date->format('m');
+            $year = $date->format('Y');
+            $monthName = $dutchMonths[$month] ?? 'Onbekende maand';
+            return "$day $monthName $year";
+        } else {
+            return "Invalid date format!";
+        }
+    } else {
+        $day = date('j', $time);
+        $month = date('m', $time);
+        $year = date('Y', $time);
+        $monthName = $dutchMonths[$month] ?? 'Onbekende maand';
+        return "$day $monthName $year";
+    }
 }
 function calculateTotals(array $transactions): array
 {
@@ -43,6 +66,7 @@ function calculateTotals(array $transactions): array
     $totals['netto'] = $totals['income'] + $totals['expenses'];
     return $totals;
 }
+
 $transactions = parseCsvFile($filePath);
 $totals = calculateTotals($transactions);
 

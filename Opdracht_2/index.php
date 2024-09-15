@@ -7,6 +7,8 @@ $root = __DIR__ . DIRECTORY_SEPARATOR;
 define('FILES_PATH', $root . 'transaction_files' . DIRECTORY_SEPARATOR);
 define('APP_PATH', $root . DIRECTORY_SEPARATOR);
 define('VIEWS_PATH', $root . 'views' . DIRECTORY_SEPARATOR);
+include $root . DIRECTORY_SEPARATOR . 'monthConverter.php';
+
 
 if (!is_dir(FILES_PATH)) {
     die('FILES_PATH is not a valid directory.');
