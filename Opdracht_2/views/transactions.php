@@ -35,6 +35,7 @@
 <body>
     <div class="container mt-5">
         <h1 class="text-center mb-4">Transacties</h1>
+        <a href="javascript:history.back()" class="btn btn-secondary mb-4">Terug</a>
         <table class="table table-bordered table-striped">
             <thead class="thead-dark">
                 <tr>
