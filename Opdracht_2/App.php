@@ -1,56 +1,16 @@
 <?php
 
 declare(strict_types=1);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 function parseCsvFile(string $filePath): array
 {
-    $transactions = [];
-    $file = fopen($filePath, 'r');
-    fgetcsv($file, 1000, ',');
-
-    while (($data = fgetcsv($file, 1000, ',')) !== false) {
-        if (count($data) >= 4) {
-            $transactions[] = [
-                'datum' => formatDate($data[0]) ?? '',
-                'checksum' => $data[1] ?? '',
-                'beschrijving' => $data[2] ?? '',
-                'bedrag' => floatval($data[3]) ?? ''
-            ];
-        }
-    }
-
-    fclose($file);
+    $transactions = str_ends_with($filePath, "gegevens-1.csv") ? getParsedCsv($filePath, 'm-d-Y') : getParsedCsv($filePath, 'd-m-Y');
     return $transactions;
 }
 
-function formatDate(string $date): string
-{
-    global $dutchMonths;
-
-    //Very hacky solution lmao
-    $timestamp = str_replace("/", "-", $date);
-    $time = strtotime($timestamp);
-
-    if ($time === false) {
-        $date = DateTime::createFromFormat('m-d-Y', $timestamp) ?: DateTime::createFromFormat('m-d-Y', $timestamp);
-
-        if ($date) {
-            $day = $date->format('j');
-            $month = $date->format('m');
-            $year = $date->format('Y');
-            $monthName = $dutchMonths[$month] ?? 'Onbekende maand';
-            return "$day $monthName $year";
-        } else {
-            return "Invalid date format!";
-        }
-    } else {
-        $day = date('j', $time);
-        $month = date('m', $time);
-        $year = date('Y', $time);
-        $monthName = $dutchMonths[$month] ?? 'Onbekende maand';
-        return "$day $monthName $year";
-    }
-}
 function calculateTotals(array $transactions): array
 {
     $totals = ['income' => 0, 'expenses' => 0];
