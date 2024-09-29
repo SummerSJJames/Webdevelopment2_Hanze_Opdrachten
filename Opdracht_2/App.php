@@ -27,7 +27,17 @@ function calculateTotals(array $transactions): array
     return $totals;
 }
 
+function getFileName($input): String {
+    $input = str_replace('.csv','', $input);
+    $lastSlashPos = strrpos($input, '\\');
+    if ($lastSlashPos !== false) {
+        return substr($input, $lastSlashPos + 1);
+    }
+    return $input;
+}
+
 $transactions = parseCsvFile($filePath);
 $totals = calculateTotals($transactions);
+$fileName = ucfirst(getFileName($filePath));
 
 include VIEWS_PATH . 'transactions.php';

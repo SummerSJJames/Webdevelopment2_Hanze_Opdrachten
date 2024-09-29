@@ -25,8 +25,8 @@ function getParsedCsv($filePath, $format): array
 
 function preProcessCSV($filePath): string
 {
+    //Dit is een zooi, maar het werkt :)
     $fileContent = file_get_contents($filePath);
-
     $fileContent = str_replace('"', '', $fileContent);
     $fileContent = str_replace("'", '', $fileContent);
     $fileContent = preg_replace('/;{2,}/', '', $fileContent);
@@ -39,6 +39,9 @@ function preProcessCSV($filePath): string
     }, $fileContent);
     $fileContent = str_replace("\t", ",", $fileContent);
     $fileContent = preg_replace('/[^,]\s*$/m', '$0,', $fileContent);
+    $fileContent = preg_replace('/^([^,]+),([^,]+)(?=\D)(?!,)/m', '$1,,$2', $fileContent);
+    $fileContent = preg_replace('/[^\x00-\x7F]+/', '', $fileContent);
+
     $tempFilePath = tempnam(sys_get_temp_dir(), 'preprocessed_csv');
     file_put_contents($tempFilePath, $fileContent);
     return $tempFilePath;
