@@ -1,18 +1,18 @@
 <?php
 class Blogs extends Dbh {
     public function addBlog(Blog $blog) {
-        $sql = "INSERT INTO blogs (title, inhoud, userid) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO blogs (title, inhoud, link, userid) VALUES (?, ?, ?, ?)";
         $stmt = $this->connect()->prepare($sql);
-        $stmt->execute([$blog->getTitle(), $blog->getContent(), $blog->getUserId()]);
+        $stmt->execute([$blog->getTitle(), $blog->getContent(), $blog->getLink(), $blog->getUserId()]);
     }
 
     public function getBlogs() {
         $sql = "SELECT * FROM blogs";
         $stmt = $this->connect()->query($sql);
         $blogs = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+    
         $usersModel = new Users();
-
+    
         foreach ($blogs as &$blog) {
             $user = $usersModel->getUserById($blog['userid']);
             if ($user) {
@@ -23,7 +23,7 @@ class Blogs extends Dbh {
                 $blog['achternaam'] = '';
             }
         }
-
+    
         return $blogs;
     }
 
@@ -48,9 +48,9 @@ class Blogs extends Dbh {
         $stmt->execute([$blogId]);
     }
 
-    public function updateBlog($blogId, $title, $content) {
-        $sql = "UPDATE blogs SET title = ?, inhoud = ? WHERE id = ?";
+    public function updateBlog($blogId, $title, $content, $link) {
+        $sql = "UPDATE blogs SET title = ?, inhoud = ?, link = ? WHERE id = ?";
         $stmt = $this->connect()->prepare($sql);
-        $stmt->execute([$title, $content, $blogId]);
+        $stmt->execute([$title, $content, $link, $blogId]);
     }
 }

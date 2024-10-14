@@ -3,11 +3,13 @@ class Blog extends Dbh {
     private $title;
     private $content;
     private $userId;
+    private $link;
 
-    public function __construct($title, $content, $userId) {
+    public function __construct($title, $content, $userId, $link = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ') {
         $this->title = $title;
         $this->content = $content;
         $this->userId = $userId;
+        $this->link = $link;
     }
 
     public function getTitle() {
@@ -20,5 +22,9 @@ class Blog extends Dbh {
 
     public function getUserId() {
         return $this->userId;
+    }
+
+    public function getLink() { 
+        return $this->link;
     }
 }

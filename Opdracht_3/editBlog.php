@@ -5,17 +5,18 @@ include 'includes/class-autoload.inc.php';
 $controller = new BlogsContr();
 
 if (!isset($_SESSION['userid'])) {
-    header("Location: login.php"); // Redirect naar inlogpagina als niet ingelogd
+    header("Location: login.php");
     exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_blog'])) {
     $title = $_POST['title'] ?? '';
     $content = $_POST['content'] ?? '';
+    $link = $_POST['link'] ?? '';
     $blogId = $_POST['blog_id'] ?? '';
 
-    $controller->updateBlog($blogId, $title, $content); // Zorg ervoor dat je deze functie toevoegt in de controller
-    header("Location: profile.php"); // Redirect naar het profiel na update
+    $controller->updateBlog($blogId, $title, $content, $link);
+    header("Location: profile.php");
     exit();
 }
 
@@ -47,6 +48,10 @@ $blog = $controller->getBlogById($blogId);
                 <label for="content">Inhoud:</label>
                 <textarea name="content" id="content" class="form-control" required><?php echo htmlspecialchars($blog['inhoud']); ?></textarea>
             </div>
+            <div class="form-group">
+    <label for="link">Link:</label>
+    <input type="url" name="link" id="link" class="form-control" value="<?php echo htmlspecialchars($blog['link']); ?>">
+</div>
             <button type="submit" name="update_blog" class="btn btn-success">Bijwerken</button>
         </form>
     <?php else: ?>

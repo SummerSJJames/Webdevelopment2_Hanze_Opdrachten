@@ -10,8 +10,13 @@ class BlogsContr{
         $this->blogModel->deleteBlog($blogId);
     }
 
-    public function updateBlog($blogId, $title, $content) {
-        $this->blogModel->updateBlog($blogId, $title, $content);
+    public function updateBlog($blogId, $title, $content, $link) {
+        if (empty($title) || empty($content)) {
+            echo "Title and content cannot be empty.";
+            return;
+        }
+    
+        $this->blogModel->updateBlog($blogId, $title, $content, $link);
     }
 
     public function getBlogById($blogId) {
@@ -22,16 +27,16 @@ class BlogsContr{
         return $this->blogModel->getBlogsByUserId($userId);
     }
 
-    public function createBlog($title, $content, $userId) {
+    public function createBlog($title, $content, $userId, $link = '') {
         if (empty($title) || empty($content)) {
             echo "Title and content cannot be empty.";
             return;
         }
-
-        $blog = new Blog($title, $content, $userId);
-
+    
+        $blog = new Blog($title, $content, $userId, $link);
+    
         $this->blogModel->addBlog($blog);
-
+    
         echo "Blog created successfully!";
     }
 
